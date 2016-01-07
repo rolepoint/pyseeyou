@@ -25,7 +25,7 @@ g = Grammar('''
             offset = _ "offset" _ ":" _ digits _
 
             octothorpe = ~"#"
-            string     = (id/~"[^{}]+"/_)+
+            string     = (~"\w+"/~"[^{}]+"/_)+
             id         = ~"\w+"i
             digits     = ~"[0-9]+"
             _          = ~"\s*"

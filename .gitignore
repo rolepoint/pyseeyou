@@ -1,2 +1,4 @@
+*.py[cod]
+
 # TextMate properties file
 .tm_properties
