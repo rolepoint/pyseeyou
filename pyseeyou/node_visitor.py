@@ -3,17 +3,23 @@ from __future__ import unicode_literals
 from parsimonious.nodes import NodeVisitor
 from toolz import merge
 
+from pyseeyou.locales import get_cardinal_category
+
 
 class ICUNodeVisitor(NodeVisitor):
-    def __init__(self, options):
+    def __init__(self, options, lang='en'):
         self.options = options
+        self.lang = lang
 
     def generic_visit(self, node, visited_children):
         if visited_children:
-            not_none = self._filter_none(visited_children)
+            visited_children = self._filter_none(visited_children)
 
-            if not_none:
-                return not_none[0]
+        if len(visited_children) > 1:
+            return merge(visited_children)
+
+        elif len(visited_children) == 1:
+            return visited_children[0]
 
     def visit_message_format_pattern(self, node, visited_children):
         text = u''
@@ -22,17 +28,12 @@ class ICUNodeVisitor(NodeVisitor):
             if not item:
                 continue
 
-            elif isinstance(item, unicode):
+            if isinstance(item, unicode):
                 text += item
 
-            elif isinstance(item, dict):
+            else:
                 for key in item:
-                    if not item[key]:
-                        text += self.options[key]
-                    elif key in self.options:
-                        text += item[key][self.options[key]]
-                    else:
-                        text += item[key]['other']
+                    text += self._get_formed_string(item, key)
 
         return text
 
@@ -53,28 +54,19 @@ class ICUNodeVisitor(NodeVisitor):
         return merge(visited_children)
 
     def visit_select_form(self, node, visited_children):
-        key, value = None, None
-        for child in visited_children:
-            if not child:
-                continue
-
-            elif isinstance(child, unicode):
-                value = child
-
-            elif isinstance(child, dict):
-                if child.get('key'):
-                    key = child['key']
-
-        return {key: value}
+        return self._get_key_value(visited_children)
 
     def visit_plural_format_pattern(self, node, visited_children):
-        pass
+        return visited_children[1]
 
     def visit_plural_form(self, node, visited_children):
-        pass
+        return self._get_key_value(visited_children)
 
     def visit_plural_key(self, node, visited_children):
-        pass
+        if isinstance(visited_children[0], int):
+            return {'key': visited_children[0]}
+
+        return visited_children[0]
 
     def visit_arg_style_pattern(self, node, visited_children):
         pass
@@ -83,7 +75,7 @@ class ICUNodeVisitor(NodeVisitor):
         pass
 
     def visit_octothorpe(self, node, visited_children):
-        pass
+        return unicode(node.text)
 
     def visit_string(self, node, visited_children):
         return unicode(node.text)
@@ -92,10 +84,53 @@ class ICUNodeVisitor(NodeVisitor):
         return {'key': unicode(node.text)}
 
     def visit_digits(self, node, visited_children):
-        pass
+        return int(node.text)
 
     def visit__(self, node, visited_children):
         pass
+
+    def _get_formed_string(self, item, key):
+        # Direct replacement, {} style
+        if not item[key]:
+            return self.options[key]
+
+        # self.option has this key as an int -> change plurality
+        if isinstance(self.options.get(key), int):
+            if self.options[key] in item[key]:
+                return item[key][self.options[key]]
+
+            else:
+                plural_key = get_cardinal_category(
+                    self.options[key], self.lang)
+
+                if '#' in item[key][plural_key]:
+                    return item[key][plural_key].replace(
+                        '#', unicode(self.options[key]))
+
+                else:
+                    return item[key][plural_key]
+
+        # self.option has this key as a string -> change selection
+        else:
+            if key in self.options:
+                return item[key][self.options[key]]
+
+            else:
+                return item[key]['other']
+
+    def _get_key_value(self, items):
+        key, value = None, None
+        for item in items:
+            if not item:
+                continue
+
+            elif isinstance(item, unicode):
+                value = item
+
+            elif isinstance(item, dict):
+                key = item['key']
+
+        return {key: value}
 
     def _filter_none(self, items):
         return [item for item in items if item is not None]
