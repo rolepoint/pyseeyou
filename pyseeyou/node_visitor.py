@@ -22,19 +22,29 @@ class ICUNodeVisitor(NodeVisitor):
             if not item:
                 continue
 
-            for key in item:
-                if key in self.options:
-                    text += item[key][self.options[key]]
-                else:
-                    text += item[key]
+            elif isinstance(item, unicode):
+                text += item
+
+            elif isinstance(item, dict):
+                for key in item:
+                    if not item[key]:
+                        text += self.options[key]
+                    elif key in self.options:
+                        text += item[key][self.options[key]]
+                    else:
+                        text += item[key]['other']
 
         return text
 
     def visit_message_format_element(self, node, visited_children):
-        key, values = self._filter_none(visited_children)
-        key = key.get('key')
+        visited_children = self._filter_none(visited_children)
+        key = visited_children[0].get('key')
 
-        return {key: values}
+        if len(visited_children) == 1:
+            return {key: None}
+        else:
+            values = visited_children[1]
+            return {key: values}
 
     def visit_element_format(self, node, visited_children):
         return visited_children[0]
@@ -76,10 +86,10 @@ class ICUNodeVisitor(NodeVisitor):
         pass
 
     def visit_string(self, node, visited_children):
-        return {'value': node.text}
+        return unicode(node.text)
 
     def visit_id(self, node, visited_children):
-        return {'key': node.text}
+        return {'key': unicode(node.text)}
 
     def visit_digits(self, node, visited_children):
         pass
