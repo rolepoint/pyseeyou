@@ -83,6 +83,9 @@ class ICUNodeVisitor(NodeVisitor):
     def visit_id(self, node, visited_children):
         return {'key': unicode(node.text)}
 
+    def visit_replace_type(self, node, visited_children):
+        return {'replace_type': unicode(node.text)}
+
     def visit_digits(self, node, visited_children):
         return int(node.text)
 
@@ -94,29 +97,38 @@ class ICUNodeVisitor(NodeVisitor):
         if not item[key]:
             return self.options[key]
 
-        # self.option has this key as an int -> change plurality
-        if isinstance(self.options.get(key), int):
-            if self.options[key] in item[key]:
-                return item[key][self.options[key]]
+        replace_type = item[key].pop('replace_type')
+        if replace_type.lower() == 'select':
+            return self._select_replace(item[key], key)
 
-            else:
-                plural_key = get_cardinal_category(
-                    self.options[key], self.lang)
+        elif replace_type.lower() == 'plural':
+            return self._plural_replace(item[key], key)
 
-                if '#' in item[key][plural_key]:
-                    return item[key][plural_key].replace(
-                        '#', unicode(self.options[key]))
+    def _select_replace(self, item, key):
+        if key in self.options:
+            return item[self.options[key]]
 
-                else:
-                    return item[key][plural_key]
-
-        # self.option has this key as a string -> change selection
         else:
-            if key in self.options:
-                return item[key][self.options[key]]
+            return item['other']
+
+    def _plural_replace(self, item, key):
+        try:
+            self.options[key] = int(self.options[key])
+        except ValueError:
+            pass
+
+        if self.options[key] in item:
+            return item[self.options[key]]
+
+        else:
+            plural_key = get_cardinal_category(self.options[key], self.lang)
+
+            if '#' in item[plural_key]:
+                return item[plural_key].replace(
+                    '#', unicode(self.options[key]))
 
             else:
-                return item[key]['other']
+                return item[plural_key]
 
     def _get_key_value(self, items):
         key, value = None, None

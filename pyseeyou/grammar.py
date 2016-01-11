@@ -8,9 +8,8 @@ g = Grammar('''
 
             message_format_element = "{" _ id ("," element_format)? _ "}"
 
-            element_format = (_ "plural" _ "," _ plural_format_pattern _) /
-                (_ "selectordinal" _ "," _ plural_format_pattern _) /
-                (_ "select" _ "," _ select_format_pattern _) /
+            element_format = (_ replace_type _ "," _ plural_format_pattern _) /
+                (_ replace_type _ "," _ select_format_pattern _) /
                 (_ id arg_style_pattern*)
 
             plural_format_pattern = offset? (plural_form)+
@@ -24,9 +23,10 @@ g = Grammar('''
 
             offset = _ "offset" _ ":" _ digits _
 
-            octothorpe = ~"#"
-            string     = (~"\w+"/~"[^{}]+"/_)+
-            id         = ~"\w+"i
-            digits     = ~"[0-9]+"
-            _          = ~"\s*"
+            octothorpe   = ~"#"
+            string       = (~"\w+"/~"[^{}]+"/_)+
+            id           = ~"\w+"i
+            replace_type = ~"\w+"i
+            digits       = ~"[0-9]+"
+            _            = ~"\s*"
             ''')
