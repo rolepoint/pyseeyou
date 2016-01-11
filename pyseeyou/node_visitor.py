@@ -57,7 +57,7 @@ class ICUNodeVisitor(NodeVisitor):
         return self._get_key_value(visited_children)
 
     def visit_plural_format_pattern(self, node, visited_children):
-        return visited_children[1]
+        return merge(visited_children)
 
     def visit_plural_form(self, node, visited_children):
         return self._get_key_value(visited_children)
@@ -72,7 +72,9 @@ class ICUNodeVisitor(NodeVisitor):
         pass
 
     def visit_offset(self, node, visited_children):
-        pass
+        for child in visited_children:
+            if isinstance(child, int):
+                return {'offset': child}
 
     def visit_octothorpe(self, node, visited_children):
         return unicode(node.text)
@@ -116,6 +118,12 @@ class ICUNodeVisitor(NodeVisitor):
             self.options[key] = int(self.options[key])
         except ValueError:
             pass
+
+        if 'offset' in item:
+            self.options[key] -= item['offset']
+
+            if self.options[key] < 0:
+                self.options[key] = 0
 
         if self.options[key] in item:
             return item[self.options[key]]
