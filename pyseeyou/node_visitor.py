@@ -99,7 +99,7 @@ class ICUNodeVisitor(NodeVisitor):
         if not item[key]:
             return self.options[key]
 
-        replace_type = item[key].pop('replace_type')
+        replace_type = item[key]['replace_type']
         if replace_type.lower() == 'select':
             return self._select_replace(item[key], key)
 

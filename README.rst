@@ -1,7 +1,7 @@
 pyseeyou
 ========
 
-A Python ICU parsing tool,
+A Python ICU MessageFormat parsing tool,
 using `parsimonious <https://github.com/erikrose/parsimonious>`_ to parse a
 PEG, which has been taken from
 `messageformat.js <https://github.com/SlexAxton/messageformat.js>`_.
