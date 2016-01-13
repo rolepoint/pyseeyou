@@ -57,6 +57,7 @@ class ICUNodeVisitor(NodeVisitor):
         return self._get_key_value(visited_children)
 
     def visit_plural_format_pattern(self, node, visited_children):
+        visited_children = self._filter_none(visited_children)
         return merge(visited_children)
 
     def visit_plural_form(self, node, visited_children):

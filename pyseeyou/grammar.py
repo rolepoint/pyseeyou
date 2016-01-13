@@ -9,8 +9,8 @@ g = Grammar('''
             message_format_element = "{" _ id ("," element_format)? _ "}"
 
             element_format =
-                (_ replace_type _ "," _ select_format_pattern _) /
                 (_ replace_type _ "," _ plural_format_pattern _) /
+                (_ replace_type _ "," _ select_format_pattern _) /
                 (_ id arg_style_pattern*)
 
             plural_format_pattern = offset? (plural_form)+
