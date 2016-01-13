@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 
+from decimal import Decimal
 from parsimonious.nodes import NodeVisitor
 from toolz import merge
 
@@ -22,7 +23,7 @@ class ICUNodeVisitor(NodeVisitor):
             return visited_children[0]
 
     def visit_message_format_pattern(self, node, visited_children):
-        text = u''
+        text = ''
 
         for item in visited_children:
             if not item:
@@ -64,7 +65,7 @@ class ICUNodeVisitor(NodeVisitor):
         return self._get_key_value(visited_children)
 
     def visit_plural_key(self, node, visited_children):
-        if isinstance(visited_children[0], int):
+        if isinstance(visited_children[0], unicode):
             return {'key': visited_children[0]}
 
         return visited_children[0]
@@ -88,6 +89,9 @@ class ICUNodeVisitor(NodeVisitor):
 
     def visit_replace_type(self, node, visited_children):
         return {'replace_type': unicode(node.text)}
+
+    def visit_decimal(self, node, visited_children):
+        return unicode(node.text)
 
     def visit_digits(self, node, visited_children):
         return int(node.text)
@@ -115,26 +119,26 @@ class ICUNodeVisitor(NodeVisitor):
             return item['other']
 
     def _plural_replace(self, item, key):
-        try:
-            self.options[key] = int(self.options[key])
-        except ValueError:
-            pass
+        str_key = str(self.options[key])
 
         if 'offset' in item:
-            self.options[key] -= item['offset']
+            dec_str_key = Decimal(self.options[key])
+            dec_str_key -= item['offset']
 
-            if self.options[key] < 0:
-                self.options[key] = 0
+            if dec_str_key < 0:
+                str_key = '0'
+            else:
+                str_key = str(dec_str_key)
 
-        if self.options[key] in item:
-            return item[self.options[key]]
+        if str_key in item:
+            return item[str_key]
 
         else:
-            plural_key = get_cardinal_category(self.options[key], self.lang)
+            plural_key = get_cardinal_category(str_key, self.lang)
 
             if '#' in item[plural_key]:
                 return item[plural_key].replace(
-                    '#', unicode(self.options[key]))
+                    '#', unicode(str_key))
 
             else:
                 return item[plural_key]

@@ -65,6 +65,22 @@ def test_plural_dict_uses_string():
     assert i.visit(msg) == '42 ticketerinos.'
 
 
+def test_plural_dict_with_decimals():
+    msg = g.parse('''{NUM_TICKETS, plural, one {1 ticket} other {# tickets} =42.5 {42 ticketerinos}}.''')
+
+    i = ICUNodeVisitor({'NUM_TICKETS': '1'})
+    assert i.visit(msg) == '1 ticket.'
+
+    i = ICUNodeVisitor({'NUM_TICKETS': '1.0'})
+    assert i.visit(msg) == '1.0 tickets.'
+
+    i = ICUNodeVisitor({'NUM_TICKETS': '42'})
+    assert i.visit(msg) == '42 tickets.'
+
+    i = ICUNodeVisitor({'NUM_TICKETS': '42.5'})
+    assert i.visit(msg) == '42 ticketerinos.'
+
+
 def test_msg_with_basic_replace():
     msg = g.parse('''I {GREETING} this finds you well.''')
 

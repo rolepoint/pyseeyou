@@ -15,7 +15,7 @@ g = Grammar('''
 
             plural_format_pattern = offset? (plural_form)+
             plural_form = _ plural_key _ "{" _ message_format_pattern _ "}"
-            plural_key = id / ("=" digits)
+            plural_key = id / ("=" decimal)
 
             select_format_pattern = select_form+
             select_form = _ id _ "{" _ message_format_pattern _ "}"
@@ -28,6 +28,7 @@ g = Grammar('''
             string       = (~"\w+"/~"[^{}]+"/_)+
             id           = ~"\w+"i
             replace_type = ~"\w+"i
+            decimal      = ~"[0-9]+(\.[0-9]+)?"
             digits       = ~"[0-9]+"
             _            = ~"\s*"
             ''')
