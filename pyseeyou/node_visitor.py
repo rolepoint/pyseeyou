@@ -122,7 +122,7 @@ class ICUNodeVisitor(NodeVisitor):
         str_key = str(self.options[key])
 
         if 'offset' in item:
-            dec_str_key = Decimal(self.options[key])
+            dec_str_key = Decimal(str_key)
             dec_str_key -= item['offset']
 
             if dec_str_key < 0:
