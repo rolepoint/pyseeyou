@@ -2,8 +2,10 @@ from __future__ import unicode_literals
 
 
 def get_cardinal_category(num_string, lang):
+    n, i, v, w, f, t = get_parts_of_num(num_string)
+
     if lang in LOCALE_FUNCTIONS:
-        return LOCALE_FUNCTIONS[lang](num_string)
+        return LOCALE_FUNCTIONS[lang](n, i, v, w, f, t)
     else:
         raise Exception()
 
@@ -46,26 +48,53 @@ def get_parts_of_num(num_string):
     return n, i, v, w, f, t
 
 
-def one_or_other(num_string):
-    n, i, v, w, f, t = get_parts_of_num(num_string)
+def brazilian_pt(n, i, v, w, f, t):
+    if 0 <= i < 2 and f == 0:
+        return 'one'
 
+    return 'other'
+
+
+def czech(n, i, v, w, f, t):
+    if i == 1 and v == 0:
+        return 'one'
+
+    if 2 <= i <= 4 and v == 0:
+        return 'few'
+
+    if v != 0:
+        return 'many'
+
+    return 'other'
+
+
+def french(n, i, v, w, f, t):
+    if i == 0 or i == 1:
+        return 'one'
+
+    return 'other'
+
+
+def one_or_other(n, i, v, w, f, t):
     if i == 1 and v == 0:
         return 'one'
 
     return 'other'
 
 
-def other(num_string):
-    n, i, v, w, f, t = get_parts_of_num(num_string)
-
+def other(n, i, v, w, f, t):
     return 'other'
 
 
 LOCALE_FUNCTIONS = {
-    'en': one_or_other,
+    'cs': czech,
     'de': one_or_other,
+    'en': one_or_other,
+    'fr': french,
     'it': one_or_other,
     'ja': other,
     'nl': one_or_other,
+    'pt': brazilian_pt,
+    'pt_PT': one_or_other,
     'zh': other
 }
