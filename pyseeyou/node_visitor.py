@@ -9,6 +9,17 @@ from pyseeyou.locales import get_cardinal_category
 
 class ICUNodeVisitor(NodeVisitor):
     def __init__(self, options, lang='en'):
+        '''
+        ICUNodeVisitor is a walker for the generated parse tree from
+        pyseeyou.grammar.g
+
+        Calling visit() on an instance of the ICUNodeVisitor will traverse the
+        tree, returning a fully formed string, using the self.options dict as
+        the values to replace any IDs that were parsed using the grammar.
+
+        :arg options: Values used to replace parsed IDs with.
+        :arg lang: Language used to derive pluralisation phrase of number
+        '''
         self.options = options
         self.lang = lang
 
