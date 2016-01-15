@@ -17,8 +17,8 @@ class ICUNodeVisitor(NodeVisitor):
         tree, returning a fully formed string, using the self.options dict as
         the values to replace any IDs that were parsed using the grammar.
 
-        :arg options: Values used to replace parsed IDs with.
-        :arg lang: Language used to derive pluralisation phrase of number
+        :param options: Values used to replace parsed IDs with.
+        :param lang: Language used to derive pluralisation phrase of number
         '''
         self.options = options
         self.lang = lang

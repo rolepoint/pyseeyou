@@ -1,5 +1,6 @@
+--------
 pyseeyou
-========
+--------
 
 A Python ICU MessageFormat parsing tool,
 using `parsimonious <https://github.com/erikrose/parsimonious>`_ to parse a
@@ -8,27 +9,24 @@ PEG, which has been taken from
 
 Written for Python 2.7
 
-Usage:
+Usage
+=====
 
 .. code-block:: python
 
-    from pyseeyou.grammar import g
-    from pyseeyou.node_visitor import ICUNodeVisitor
+    from pyseeyou import format
 
-    a = g.parse('''{GENDER, select,
-                        male {He}
-                      female {She}
-                       other {They}
-                    } found {NUM_RESULTS, plural,
-                                one {1 result}
-                              other {# results}
-                            } in {NUM_CATEGORIES, plural,
-                                      one {1 category}
-                                    other {# categories}
-                                 }.''')
+    result = format('''{GENDER, select,
+                           male {He}
+                         female {She}
+                          other {They}
+                       } found {NUM_RESULTS, plural,
+                           one {1 result}
+                         other {# results}
+                       } in {NUM_CATEGORIES, plural,
+                             one {1 category}
+                           other {# categories}
+                       }.''',
+            {'GENDER': 'male', 'NUM_RESULTS': 1, 'NUM_CATEGORIES': '2'}, 'en')
 
-    i = ICUNodeVisitor(
-        {'GENDER': 'male', 'NUM_RESULTS': 1, 'NUM_CATEGORIES': '2'})
-
-    i.visit(a)
-    => He found 1 result in 2 categories.
+    => u'He found 1 result in 2 categories.'

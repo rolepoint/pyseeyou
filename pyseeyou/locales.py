@@ -7,7 +7,7 @@ def get_cardinal_category(num_string, lang):
     if lang in LOCALE_FUNCTIONS:
         return LOCALE_FUNCTIONS[lang](n, i, v, w, f, t)
     else:
-        raise Exception()
+        raise Exception('Unknown locale code.')
 
 
 def get_parts_of_num(num_string):

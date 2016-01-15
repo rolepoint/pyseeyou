@@ -2,12 +2,13 @@
 from __future__ import unicode_literals
 import pytest
 
-from pyseeyou.grammar import g
+from pyseeyou.grammar import ICUMessageFormat
 from pyseeyou.node_visitor import ICUNodeVisitor
 
 
 def test_process_select_statement():
-    msg = g.parse('''{WHO, select, male {He} female {She} other {They}}.''')
+    msg = ICUMessageFormat.parse(
+        '''{WHO, select, male {He} female {She} other {They}}.''')
 
     i = ICUNodeVisitor({'WHO': 'male'})
     assert i.visit(msg) == 'He.'
@@ -20,14 +21,16 @@ def test_process_select_statement():
 
 
 def test_use_other_statement_if_no_select_arg():
-    msg = g.parse('''{WHO, select, male {He} female {She} other {They}}.''')
+    msg = ICUMessageFormat.parse(
+        '''{WHO, select, male {He} female {She} other {They}}.''')
 
     i = ICUNodeVisitor({})
     assert i.visit(msg) == 'They.'
 
 
 def test_process_plural_statement():
-    msg = g.parse('''{NUM_TICKETS, plural, one {1 ticket} other {# tickets} =42 {42 ticketerinos}}.''')
+    msg = ICUMessageFormat.parse(
+        '''{NUM_TICKETS, plural, one {1 ticket} other {# tickets} =42 {42 ticketerinos}}.''')
 
     i = ICUNodeVisitor({'NUM_TICKETS': 1})
     assert i.visit(msg) == '1 ticket.'
@@ -40,7 +43,8 @@ def test_process_plural_statement():
 
 
 def test_plural_statement_with_offset():
-    msg = g.parse('''{NUM_TICKETS, plural, offset:3 one {1 ticket} other {# tickets} =42 {42 ticketerinos}}.''')
+    msg = ICUMessageFormat.parse(
+        '''{NUM_TICKETS, plural, offset:3 one {1 ticket} other {# tickets} =42 {42 ticketerinos}}.''')
 
     i = ICUNodeVisitor({'NUM_TICKETS': 2})
     assert i.visit(msg) == '0 tickets.'
@@ -53,7 +57,8 @@ def test_plural_statement_with_offset():
 
 
 def test_plural_dict_uses_string():
-    msg = g.parse('''{NUM_TICKETS, plural, one {1 ticket} other {# tickets} =42 {42 ticketerinos}}.''')
+    msg = ICUMessageFormat.parse(
+        '''{NUM_TICKETS, plural, one {1 ticket} other {# tickets} =42 {42 ticketerinos}}.''')
 
     i = ICUNodeVisitor({'NUM_TICKETS': '1'})
     assert i.visit(msg) == '1 ticket.'
@@ -66,7 +71,8 @@ def test_plural_dict_uses_string():
 
 
 def test_plural_dict_with_decimals():
-    msg = g.parse('''{NUM_TICKETS, plural, one {1 ticket} other {# tickets} =42.5 {42 ticketerinos}}.''')
+    msg = ICUMessageFormat.parse(
+        '''{NUM_TICKETS, plural, one {1 ticket} other {# tickets} =42.5 {42 ticketerinos}}.''')
 
     i = ICUNodeVisitor({'NUM_TICKETS': '1'})
     assert i.visit(msg) == '1 ticket.'
@@ -82,7 +88,8 @@ def test_plural_dict_with_decimals():
 
 
 def test_msg_with_basic_replace():
-    msg = g.parse('''I {GREETING} this finds you well.''')
+    msg = ICUMessageFormat.parse(
+        '''I {GREETING} this finds you well.''')
 
     i = ICUNodeVisitor({'GREETING': 'hope'})
     assert i.visit(msg) == 'I hope this finds you well.'
@@ -95,7 +102,8 @@ def test_msg_with_basic_replace():
 
 
 def test_msg_with_unicode_chars():
-    msg = g.parse('''{SYMBOL, select, snowman {☃} sun {☉} other {☹}}''')
+    msg = ICUMessageFormat.parse(
+        '''{SYMBOL, select, snowman {☃} sun {☉} other {☹}}''')
 
     i = ICUNodeVisitor({'SYMBOL': 'snowman'})
     assert i.visit(msg) == '☃'
