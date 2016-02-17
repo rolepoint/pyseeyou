@@ -11,7 +11,7 @@ class ICUNodeVisitor(NodeVisitor):
     def __init__(self, options, lang='en'):
         '''
         ICUNodeVisitor is a walker for the generated parse tree from
-        pyseeyou.grammar.g
+        pyseeyou.grammar.ICUMessageFormat.
 
         Calling visit() on an instance of the ICUNodeVisitor will traverse the
         tree, returning a fully formed string, using the self.options dict as
@@ -24,6 +24,14 @@ class ICUNodeVisitor(NodeVisitor):
         self.lang = lang
 
     def generic_visit(self, node, visited_children):
+        '''
+        Each of the methods below beginning with visit_ are called when
+        visiting a node of that type. These methods deal with how to parse and
+        process the data that has reached that node.
+
+        This generic_visit method deals with visiting nodes that have no
+        specific type.
+        '''
         if visited_children:
             visited_children = self._filter_none(visited_children)
 
