@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 
+from builtins import str
 from decimal import Decimal
 from parsimonious.nodes import NodeVisitor
 from toolz import merge
@@ -48,7 +49,7 @@ class ICUNodeVisitor(NodeVisitor):
             if not item:
                 continue
 
-            if isinstance(item, unicode):
+            if isinstance(item, str):
                 text += item
 
             else:
@@ -84,7 +85,7 @@ class ICUNodeVisitor(NodeVisitor):
         return self._get_key_value(visited_children)
 
     def visit_plural_key(self, node, visited_children):
-        if isinstance(visited_children[0], unicode):
+        if isinstance(visited_children[0], str):
             return {'key': visited_children[0]}
 
         return visited_children[0]
@@ -98,19 +99,19 @@ class ICUNodeVisitor(NodeVisitor):
                 return {'offset': child}
 
     def visit_octothorpe(self, node, visited_children):
-        return unicode(node.text)
+        return str(node.text)
 
     def visit_string(self, node, visited_children):
-        return unicode(node.text)
+        return str(node.text)
 
     def visit_id(self, node, visited_children):
-        return {'key': unicode(node.text)}
+        return {'key': str(node.text)}
 
     def visit_replace_type(self, node, visited_children):
-        return {'replace_type': unicode(node.text)}
+        return {'replace_type': str(node.text)}
 
     def visit_decimal(self, node, visited_children):
-        return unicode(node.text)
+        return str(node.text)
 
     def visit_digits(self, node, visited_children):
         return int(node.text)
@@ -157,7 +158,7 @@ class ICUNodeVisitor(NodeVisitor):
 
             if '#' in item[plural_key]:
                 return item[plural_key].replace(
-                    '#', unicode(str_key))
+                    '#', str(str_key))
 
             else:
                 return item[plural_key]
@@ -168,7 +169,7 @@ class ICUNodeVisitor(NodeVisitor):
             if not item:
                 continue
 
-            elif isinstance(item, unicode):
+            elif isinstance(item, str):
                 value = item
 
             elif isinstance(item, dict):
