@@ -1,6 +1,6 @@
 *.py[cod]
 
 .cache/
-
+.coverage
 # TextMate properties file
 .tm_properties
