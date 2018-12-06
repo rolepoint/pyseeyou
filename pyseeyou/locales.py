@@ -86,6 +86,12 @@ def other(n, i, v, w, f, t):
     return 'other'
 
 
+def spanish(n, i, v, w, f, t):
+    if i == 1 and w == 0:
+        return 'one'
+    return 'other'
+
+
 LOCALE_FUNCTIONS = {
     'cs': czech,
     'de': one_or_other,
@@ -96,5 +102,6 @@ LOCALE_FUNCTIONS = {
     'nl': one_or_other,
     'pt': brazilian_pt,
     'pt_PT': one_or_other,
-    'zh': other
+    'zh': other,
+    'es': spanish
 }
