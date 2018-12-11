@@ -1,7 +1,7 @@
 import pytest
 
 from pyseeyou.locales import (
-    get_parts_of_num, brazilian_pt, czech, french, one_or_other, other)
+    get_parts_of_num, brazilian_pt, czech, french, one_or_other, other, spanish)
 
 
 def test_get_parts_of_num():
@@ -68,3 +68,16 @@ def test_one_or_other():
     assert one_or_other(*get_parts_of_num('4')) == 'other'
     assert one_or_other(*get_parts_of_num('9')) == 'other'
     assert one_or_other(*get_parts_of_num('13')) == 'other'
+
+
+def test_spanish():
+    assert spanish(*get_parts_of_num('0')) == 'other'
+    assert spanish(*get_parts_of_num('2')) == 'other'
+    assert spanish(*get_parts_of_num('1.1')) == 'other'
+    assert spanish(*get_parts_of_num('0.9')) == 'other'
+    assert spanish(*get_parts_of_num('10.0')) == 'other'
+    assert spanish(*get_parts_of_num('1000.000')) == 'other'
+    assert spanish(*get_parts_of_num('1')) == 'one'
+    assert spanish(*get_parts_of_num('1.0')) == 'one'
+    assert spanish(*get_parts_of_num('1.00')) == 'one'
+    assert spanish(*get_parts_of_num('1.000000')) == 'one'
