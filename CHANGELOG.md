@@ -1,3 +1,6 @@
+# v0.4.0
+- Add support for Spanish (es)
+
 # v0.3.1
 - Include `future` in install_requires in setup.py
 
