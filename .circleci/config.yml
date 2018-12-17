@@ -1,0 +1,110 @@
+version: 2
+jobs:
+  py2.7:
+    docker:
+      - image: circleci/python:2.7
+    steps:
+      - checkout
+      - restore_cache:
+          key: py27-deps1-{{ checksum "dev-requirements.txt" }}-{{ checksum "requirements.txt" }}
+      - run:
+          command: |
+            virtualenv venv
+            . venv/bin/activate
+            pip install -r dev-requirements.txt
+      - save_cache:
+          key: py27-deps1-{{ checksum "dev-requirements.txt" }}-{{ checksum "requirements.txt" }}
+          paths:
+            - "venv"
+      - run:
+          command: |
+            . venv/bin/activate
+            py.test --ignore venv --junitxml=test-reports/pytest.xml
+      - store_test_results:
+          path: test-reports
+      - store_artifacts:
+          path: test-reports
+
+  py3.5:
+    docker:
+      - image: circleci/python:3.5
+    steps:
+      - checkout
+      - restore_cache:
+          key: py35-deps1-{{ checksum "dev-requirements.txt" }}-{{ checksum "requirements.txt" }}
+      - run:
+          command: |
+            python3 -m venv venv
+            . venv/bin/activate
+            pip install -r dev-requirements.txt
+      - save_cache:
+          key: py35-deps1-{{ checksum "dev-requirements.txt" }}-{{ checksum "requirements.txt" }}
+          paths:
+            - "venv"
+      - run:
+          command: |
+            . venv/bin/activate
+            py.test --ignore venv --junitxml=test-reports/pytest.xml
+      - store_test_results:
+          path: test-reports
+      - store_artifacts:
+          path: test-reports
+
+  py3.6:
+    docker:
+      - image: circleci/python:3.6
+    steps:
+      - checkout
+      - restore_cache:
+          key: py36-deps1-{{ checksum "dev-requirements.txt" }}-{{ checksum "requirements.txt" }}
+      - run:
+          command: |
+            python3 -m venv venv
+            . venv/bin/activate
+            pip install -r dev-requirements.txt
+      - save_cache:
+          key: py36-deps1-{{ checksum "dev-requirements.txt" }}-{{ checksum "requirements.txt" }}
+          paths:
+            - "venv"
+      - run:
+          command: |
+            . venv/bin/activate
+            py.test --ignore venv --junitxml=test-reports/pytest.xml
+      - store_test_results:
+          path: test-reports
+      - store_artifacts:
+          path: test-reports
+
+  py3.7:
+    docker:
+      - image: circleci/python:3.7
+    steps:
+      - checkout
+      - restore_cache:
+          key: py37-deps1-{{ checksum "dev-requirements.txt" }}-{{ checksum "requirements.txt" }}
+      - run:
+          command: |
+            python3 -m venv venv
+            . venv/bin/activate
+            pip install -r dev-requirements.txt
+      - save_cache:
+          key: py37-deps1-{{ checksum "dev-requirements.txt" }}-{{ checksum "requirements.txt" }}
+          paths:
+            - "venv"
+      - run:
+          command: |
+            . venv/bin/activate
+            py.test --ignore venv --junitxml=test-reports/pytest.xml
+      - store_test_results:
+          path: test-reports
+      - store_artifacts:
+          path: test-reports
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - py2.7
+      - py3.5
+      - py3.6
+      - py3.7
