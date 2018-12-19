@@ -1,3 +1,6 @@
+# v0.5.0
+- Add support for Python 3.7
+
 # v0.4.0
 - Add support for Spanish (es)
 
