@@ -54,7 +54,7 @@ class ICUNodeVisitor(NodeVisitor):
 
             else:
                 for key in item:
-                    text += self._get_formed_string(item, key)
+                    text += str(self._get_formed_string(item, key))
 
         return text
 
