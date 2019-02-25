@@ -156,12 +156,14 @@ class ICUNodeVisitor(NodeVisitor):
         else:
             plural_key = get_cardinal_category(str_key, self.lang)
 
-            if '#' in item[plural_key]:
-                return item[plural_key].replace(
+            text = item[plural_key] if plural_key in item else item['other'] # fall back to 'other' for optional keys where other and many are the same
+
+            if '#' in text:
+                return text.replace(
                     '#', str(str_key))
 
             else:
-                return item[plural_key]
+                return text
 
     def _get_key_value(self, items):
         key, value = None, None
