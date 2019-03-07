@@ -369,7 +369,7 @@ def cardinal_tzm(n, i, v, w, f, t):
 
 
 
-cardinals = {
+CARDINALS = {
     'af': cardinal_af,
     'ak': cardinal_ak,
     'am': cardinal_am,

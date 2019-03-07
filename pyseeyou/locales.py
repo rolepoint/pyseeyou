@@ -1,4 +1,4 @@
-from pyseeyou.cldr_rules import cardinals
+from pyseeyou.cldr_rules import CARDINALS
 
 def lookup_closest_locale(locale, available, separator = '_'):
     '''
@@ -31,12 +31,12 @@ def lookup_closest_locale(locale, available, separator = '_'):
 def get_cardinal_category(num_string, locale):
     n, i, v, w, f, t = get_parts_of_num(num_string)
 
-    closest_locale = lookup_closest_locale(locale, cardinals)
+    closest_locale = lookup_closest_locale(locale, CARDINALS)
 
     if not closest_locale:
         closest_locale = 'en'
 
-    cardinal_func = cardinals[closest_locale]
+    cardinal_func = CARDINALS[closest_locale]
 
     if not cardinal_func:
         raise Exception('Locale "{0}" not supported'.format(locale))
