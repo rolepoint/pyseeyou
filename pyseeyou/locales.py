@@ -20,7 +20,7 @@ def lookup_closest_locale(locale, available, separator = '_'):
         locales.append(locale)
 
     for locale in locales:
-        current = locales[locale].split(separator)
+        current = locale.split(separator)
         while len(current) != 0:
             candidate = separator.join(current)
             if candidate in available:
