@@ -19,8 +19,8 @@ def lookup_closest_locale(locale, available, separator = '_'):
     else:
         locales.append(locale)
 
-    for i in range(len(locales)):
-        current = locales[i].split(separator)
+    for locale in locales:
+        current = locales[locale].split(separator)
         while len(current) != 0:
             candidate = separator.join(current)
             if candidate in available:
