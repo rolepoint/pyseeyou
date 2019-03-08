@@ -1,14 +1,19 @@
 import pytest
 
 from pyseeyou.locales import get_parts_of_num
+from pyseeyou.cldr_rules import CARDINALS
 
 # ========================
 # GENERATED AUTOMATICALLY
 # DON'T MODIFY MANUALLY
 # ========================
 
-from pyseeyou.cldr_rules import (
-    cardinal_af, cardinal_ak, cardinal_am, cardinal_ar, cardinal_ast, cardinal_be, cardinal_bm, cardinal_br, cardinal_bs, cardinal_cs, cardinal_cy, cardinal_da, cardinal_dsb, cardinal_ff, cardinal_fil, cardinal_ga, cardinal_gd, cardinal_gv, cardinal_he, cardinal_is, cardinal_iu, cardinal_ksh, cardinal_lag, cardinal_lt, cardinal_lv, cardinal_mk, cardinal_mo, cardinal_mt, cardinal_pl, cardinal_pt, cardinal_ru, cardinal_shi, cardinal_si, cardinal_sl, cardinal_tzm)
+
+def check(assertions, plural_fn):
+    for assertion in assertions:
+        match, samples = assertion
+        for sample in samples:
+            assert plural_fn(*get_parts_of_num(sample)) == match
 
 def test_cardinal_af():
     assertions = [
@@ -16,10 +21,7 @@ def test_cardinal_af():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['af'])
 
 def test_cardinal_ak():
     assertions = [
@@ -27,10 +29,7 @@ def test_cardinal_ak():
         ('other', ['2','10','17','100','1000','0.1','0.5','0.9','1.1','1.4','1.7','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_ak(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['ak'])
 
 def test_cardinal_am():
     assertions = [
@@ -38,10 +37,7 @@ def test_cardinal_am():
         ('other', ['2','10','17','100','1000','1.1','1.85','2.6','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_am(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['am'])
 
 def test_cardinal_ar():
     assertions = [
@@ -53,10 +49,7 @@ def test_cardinal_ar():
         ('other', ['100','101','102','200','201','202','300','301','302','0.1','0.5','0.9','1.1','1.4','1.7','10.1'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_ar(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['ar'])
 
 def test_cardinal_ars():
     assertions = [
@@ -68,10 +61,7 @@ def test_cardinal_ars():
         ('other', ['100','101','102','200','201','202','300','301','302','0.1','0.5','0.9','1.1','1.4','1.7','10.1'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_ar(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['ars'])
 
 def test_cardinal_as():
     assertions = [
@@ -79,10 +69,7 @@ def test_cardinal_as():
         ('other', ['2','10','17','100','1000','1.1','1.85','2.6','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_am(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['as'])
 
 def test_cardinal_asa():
     assertions = [
@@ -90,10 +77,7 @@ def test_cardinal_asa():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['asa'])
 
 def test_cardinal_ast():
     assertions = [
@@ -101,10 +85,7 @@ def test_cardinal_ast():
         ('other', ['0','2','9','16','100','0.0','0.75','1.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_ast(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['ast'])
 
 def test_cardinal_az():
     assertions = [
@@ -112,10 +93,7 @@ def test_cardinal_az():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['az'])
 
 def test_cardinal_be():
     assertions = [
@@ -125,10 +103,7 @@ def test_cardinal_be():
         ('other', ['0.1','0.5','0.9','1.1','1.4','1.7','10.1'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_be(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['be'])
 
 def test_cardinal_bem():
     assertions = [
@@ -136,10 +111,7 @@ def test_cardinal_bem():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['bem'])
 
 def test_cardinal_bez():
     assertions = [
@@ -147,10 +119,7 @@ def test_cardinal_bez():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['bez'])
 
 def test_cardinal_bg():
     assertions = [
@@ -158,10 +127,7 @@ def test_cardinal_bg():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['bg'])
 
 def test_cardinal_bh():
     assertions = [
@@ -169,20 +135,14 @@ def test_cardinal_bh():
         ('other', ['2','10','17','100','1000','0.1','0.5','0.9','1.1','1.4','1.7','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_ak(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['bh'])
 
 def test_cardinal_bm():
     assertions = [
         ('other', ['0','8','15','100','1000','0.0','0.75','1.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_bm(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['bm'])
 
 def test_cardinal_bn():
     assertions = [
@@ -190,20 +150,14 @@ def test_cardinal_bn():
         ('other', ['2','10','17','100','1000','1.1','1.85','2.6','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_am(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['bn'])
 
 def test_cardinal_bo():
     assertions = [
         ('other', ['0','8','15','100','1000','0.0','0.75','1.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_bm(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['bo'])
 
 def test_cardinal_br():
     assertions = [
@@ -214,10 +168,7 @@ def test_cardinal_br():
         ('other', ['0','5','7','8','10','15','20','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_br(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['br'])
 
 def test_cardinal_brx():
     assertions = [
@@ -225,10 +176,7 @@ def test_cardinal_brx():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['brx'])
 
 def test_cardinal_bs():
     assertions = [
@@ -237,10 +185,7 @@ def test_cardinal_bs():
         ('other', ['0','5','12','19','100','0.0','0.5','0.75','1.0','1.5','1.75','2.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_bs(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['bs'])
 
 def test_cardinal_ca():
     assertions = [
@@ -248,10 +193,7 @@ def test_cardinal_ca():
         ('other', ['0','2','9','16','100','0.0','0.75','1.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_ast(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['ca'])
 
 def test_cardinal_ce():
     assertions = [
@@ -259,10 +201,7 @@ def test_cardinal_ce():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['ce'])
 
 def test_cardinal_cgg():
     assertions = [
@@ -270,10 +209,7 @@ def test_cardinal_cgg():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['cgg'])
 
 def test_cardinal_chr():
     assertions = [
@@ -281,10 +217,7 @@ def test_cardinal_chr():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['chr'])
 
 def test_cardinal_ckb():
     assertions = [
@@ -292,10 +225,7 @@ def test_cardinal_ckb():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['ckb'])
 
 def test_cardinal_cs():
     assertions = [
@@ -305,10 +235,7 @@ def test_cardinal_cs():
         ('other', ['0','5','12','19','100'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_cs(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['cs'])
 
 def test_cardinal_cy():
     assertions = [
@@ -320,10 +247,7 @@ def test_cardinal_cy():
         ('other', ['4','5','7','14','20','0.1','0.5','0.9','1.1','1.4','1.7','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_cy(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['cy'])
 
 def test_cardinal_da():
     assertions = [
@@ -331,10 +255,7 @@ def test_cardinal_da():
         ('other', ['0','2','9','16','100','0.0','2.0','2.7','3.4','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_da(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['da'])
 
 def test_cardinal_de():
     assertions = [
@@ -342,10 +263,7 @@ def test_cardinal_de():
         ('other', ['0','2','9','16','100','0.0','0.75','1.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_ast(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['de'])
 
 def test_cardinal_dsb():
     assertions = [
@@ -355,10 +273,7 @@ def test_cardinal_dsb():
         ('other', ['0','5','12','19','100','0.0','0.5','0.75','1.0','1.5','1.75','2.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_dsb(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['dsb'])
 
 def test_cardinal_dv():
     assertions = [
@@ -366,20 +281,14 @@ def test_cardinal_dv():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['dv'])
 
 def test_cardinal_dz():
     assertions = [
         ('other', ['0','8','15','100','1000','0.0','0.75','1.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_bm(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['dz'])
 
 def test_cardinal_ee():
     assertions = [
@@ -387,10 +296,7 @@ def test_cardinal_ee():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['ee'])
 
 def test_cardinal_el():
     assertions = [
@@ -398,10 +304,7 @@ def test_cardinal_el():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['el'])
 
 def test_cardinal_en():
     assertions = [
@@ -409,10 +312,7 @@ def test_cardinal_en():
         ('other', ['0','2','9','16','100','0.0','0.75','1.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_ast(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['en'])
 
 def test_cardinal_eo():
     assertions = [
@@ -420,10 +320,7 @@ def test_cardinal_eo():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['eo'])
 
 def test_cardinal_es():
     assertions = [
@@ -431,10 +328,7 @@ def test_cardinal_es():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['es'])
 
 def test_cardinal_et():
     assertions = [
@@ -442,10 +336,7 @@ def test_cardinal_et():
         ('other', ['0','2','9','16','100','0.0','0.75','1.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_ast(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['et'])
 
 def test_cardinal_eu():
     assertions = [
@@ -453,10 +344,7 @@ def test_cardinal_eu():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['eu'])
 
 def test_cardinal_fa():
     assertions = [
@@ -464,10 +352,7 @@ def test_cardinal_fa():
         ('other', ['2','10','17','100','1000','1.1','1.85','2.6','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_am(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['fa'])
 
 def test_cardinal_ff():
     assertions = [
@@ -475,10 +360,7 @@ def test_cardinal_ff():
         ('other', ['2','10','17','100','1000','2.0','2.75','3.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_ff(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['ff'])
 
 def test_cardinal_fi():
     assertions = [
@@ -486,10 +368,7 @@ def test_cardinal_fi():
         ('other', ['0','2','9','16','100','0.0','0.75','1.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_ast(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['fi'])
 
 def test_cardinal_fil():
     assertions = [
@@ -497,10 +376,7 @@ def test_cardinal_fil():
         ('other', ['4','6','9','0.4','0.6','0.9'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_fil(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['fil'])
 
 def test_cardinal_fo():
     assertions = [
@@ -508,10 +384,7 @@ def test_cardinal_fo():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['fo'])
 
 def test_cardinal_fr():
     assertions = [
@@ -519,10 +392,7 @@ def test_cardinal_fr():
         ('other', ['2','10','17','100','1000','2.0','2.75','3.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_ff(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['fr'])
 
 def test_cardinal_fur():
     assertions = [
@@ -530,10 +400,7 @@ def test_cardinal_fur():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['fur'])
 
 def test_cardinal_fy():
     assertions = [
@@ -541,10 +408,7 @@ def test_cardinal_fy():
         ('other', ['0','2','9','16','100','0.0','0.75','1.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_ast(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['fy'])
 
 def test_cardinal_ga():
     assertions = [
@@ -555,10 +419,7 @@ def test_cardinal_ga():
         ('other', ['0','11','18','25','100','0.0','0.45','0.9','1.1','1.35','1.6','10.1'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_ga(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['ga'])
 
 def test_cardinal_gd():
     assertions = [
@@ -568,10 +429,7 @@ def test_cardinal_gd():
         ('other', ['0','20','27','34','100','0.0','0.45','0.9','1.1','1.35','1.6','10.1'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_gd(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['gd'])
 
 def test_cardinal_gl():
     assertions = [
@@ -579,10 +437,7 @@ def test_cardinal_gl():
         ('other', ['0','2','9','16','100','0.0','0.75','1.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_ast(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['gl'])
 
 def test_cardinal_gsw():
     assertions = [
@@ -590,10 +445,7 @@ def test_cardinal_gsw():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['gsw'])
 
 def test_cardinal_gu():
     assertions = [
@@ -601,10 +453,7 @@ def test_cardinal_gu():
         ('other', ['2','10','17','100','1000','1.1','1.85','2.6','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_am(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['gu'])
 
 def test_cardinal_guw():
     assertions = [
@@ -612,10 +461,7 @@ def test_cardinal_guw():
         ('other', ['2','10','17','100','1000','0.1','0.5','0.9','1.1','1.4','1.7','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_ak(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['guw'])
 
 def test_cardinal_gv():
     assertions = [
@@ -626,10 +472,7 @@ def test_cardinal_gv():
         ('other', ['3','7','10','13','16','19','23'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_gv(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['gv'])
 
 def test_cardinal_ha():
     assertions = [
@@ -637,10 +480,7 @@ def test_cardinal_ha():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['ha'])
 
 def test_cardinal_haw():
     assertions = [
@@ -648,10 +488,7 @@ def test_cardinal_haw():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['haw'])
 
 def test_cardinal_he():
     assertions = [
@@ -661,10 +498,7 @@ def test_cardinal_he():
         ('other', ['0','3','10','17','101','0.0','0.75','1.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_he(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['he'])
 
 def test_cardinal_hi():
     assertions = [
@@ -672,10 +506,7 @@ def test_cardinal_hi():
         ('other', ['2','10','17','100','1000','1.1','1.85','2.6','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_am(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['hi'])
 
 def test_cardinal_hr():
     assertions = [
@@ -684,10 +515,7 @@ def test_cardinal_hr():
         ('other', ['0','5','12','19','100','0.0','0.5','0.75','1.0','1.5','1.75','2.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_bs(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['hr'])
 
 def test_cardinal_hsb():
     assertions = [
@@ -697,10 +525,7 @@ def test_cardinal_hsb():
         ('other', ['0','5','12','19','100','0.0','0.5','0.75','1.0','1.5','1.75','2.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_dsb(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['hsb'])
 
 def test_cardinal_hu():
     assertions = [
@@ -708,10 +533,7 @@ def test_cardinal_hu():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['hu'])
 
 def test_cardinal_hy():
     assertions = [
@@ -719,10 +541,7 @@ def test_cardinal_hy():
         ('other', ['2','10','17','100','1000','2.0','2.75','3.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_ff(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['hy'])
 
 def test_cardinal_ia():
     assertions = [
@@ -730,50 +549,35 @@ def test_cardinal_ia():
         ('other', ['0','2','9','16','100','0.0','0.75','1.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_ast(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['ia'])
 
 def test_cardinal_id():
     assertions = [
         ('other', ['0','8','15','100','1000','0.0','0.75','1.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_bm(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['id'])
 
 def test_cardinal_ig():
     assertions = [
         ('other', ['0','8','15','100','1000','0.0','0.75','1.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_bm(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['ig'])
 
 def test_cardinal_ii():
     assertions = [
         ('other', ['0','8','15','100','1000','0.0','0.75','1.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_bm(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['ii'])
 
 def test_cardinal_in():
     assertions = [
         ('other', ['0','8','15','100','1000','0.0','0.75','1.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_bm(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['in'])
 
 def test_cardinal_io():
     assertions = [
@@ -781,10 +585,7 @@ def test_cardinal_io():
         ('other', ['0','2','9','16','100','0.0','0.75','1.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_ast(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['io'])
 
 def test_cardinal_is():
     assertions = [
@@ -792,10 +593,7 @@ def test_cardinal_is():
         ('other', ['0','2','9','16','100','0.0','2.0','3.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_is(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['is'])
 
 def test_cardinal_it():
     assertions = [
@@ -803,10 +601,7 @@ def test_cardinal_it():
         ('other', ['0','2','9','16','100','0.0','0.75','1.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_ast(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['it'])
 
 def test_cardinal_iu():
     assertions = [
@@ -815,10 +610,7 @@ def test_cardinal_iu():
         ('other', ['0','3','10','17','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_iu(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['iu'])
 
 def test_cardinal_iw():
     assertions = [
@@ -828,30 +620,21 @@ def test_cardinal_iw():
         ('other', ['0','3','10','17','101','0.0','0.75','1.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_he(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['iw'])
 
 def test_cardinal_ja():
     assertions = [
         ('other', ['0','8','15','100','1000','0.0','0.75','1.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_bm(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['ja'])
 
 def test_cardinal_jbo():
     assertions = [
         ('other', ['0','8','15','100','1000','0.0','0.75','1.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_bm(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['jbo'])
 
 def test_cardinal_jgo():
     assertions = [
@@ -859,10 +642,7 @@ def test_cardinal_jgo():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['jgo'])
 
 def test_cardinal_ji():
     assertions = [
@@ -870,10 +650,7 @@ def test_cardinal_ji():
         ('other', ['0','2','9','16','100','0.0','0.75','1.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_ast(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['ji'])
 
 def test_cardinal_jmc():
     assertions = [
@@ -881,30 +658,21 @@ def test_cardinal_jmc():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['jmc'])
 
 def test_cardinal_jv():
     assertions = [
         ('other', ['0','8','15','100','1000','0.0','0.75','1.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_bm(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['jv'])
 
 def test_cardinal_jw():
     assertions = [
         ('other', ['0','8','15','100','1000','0.0','0.75','1.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_bm(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['jw'])
 
 def test_cardinal_ka():
     assertions = [
@@ -912,10 +680,7 @@ def test_cardinal_ka():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['ka'])
 
 def test_cardinal_kab():
     assertions = [
@@ -923,10 +688,7 @@ def test_cardinal_kab():
         ('other', ['2','10','17','100','1000','2.0','2.75','3.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_ff(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['kab'])
 
 def test_cardinal_kaj():
     assertions = [
@@ -934,10 +696,7 @@ def test_cardinal_kaj():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['kaj'])
 
 def test_cardinal_kcg():
     assertions = [
@@ -945,30 +704,21 @@ def test_cardinal_kcg():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['kcg'])
 
 def test_cardinal_kde():
     assertions = [
         ('other', ['0','8','15','100','1000','0.0','0.75','1.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_bm(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['kde'])
 
 def test_cardinal_kea():
     assertions = [
         ('other', ['0','8','15','100','1000','0.0','0.75','1.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_bm(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['kea'])
 
 def test_cardinal_kk():
     assertions = [
@@ -976,10 +726,7 @@ def test_cardinal_kk():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['kk'])
 
 def test_cardinal_kkj():
     assertions = [
@@ -987,10 +734,7 @@ def test_cardinal_kkj():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['kkj'])
 
 def test_cardinal_kl():
     assertions = [
@@ -998,20 +742,14 @@ def test_cardinal_kl():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['kl'])
 
 def test_cardinal_km():
     assertions = [
         ('other', ['0','8','15','100','1000','0.0','0.75','1.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_bm(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['km'])
 
 def test_cardinal_kn():
     assertions = [
@@ -1019,20 +757,14 @@ def test_cardinal_kn():
         ('other', ['2','10','17','100','1000','1.1','1.85','2.6','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_am(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['kn'])
 
 def test_cardinal_ko():
     assertions = [
         ('other', ['0','8','15','100','1000','0.0','0.75','1.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_bm(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['ko'])
 
 def test_cardinal_ks():
     assertions = [
@@ -1040,10 +772,7 @@ def test_cardinal_ks():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['ks'])
 
 def test_cardinal_ksb():
     assertions = [
@@ -1051,10 +780,7 @@ def test_cardinal_ksb():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['ksb'])
 
 def test_cardinal_ksh():
     assertions = [
@@ -1063,10 +789,7 @@ def test_cardinal_ksh():
         ('other', ['2','10','17','100','1000','0.1','0.5','0.9','1.1','1.4','1.7','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_ksh(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['ksh'])
 
 def test_cardinal_ku():
     assertions = [
@@ -1074,10 +797,7 @@ def test_cardinal_ku():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['ku'])
 
 def test_cardinal_kw():
     assertions = [
@@ -1086,10 +806,7 @@ def test_cardinal_kw():
         ('other', ['0','3','10','17','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_iu(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['kw'])
 
 def test_cardinal_ky():
     assertions = [
@@ -1097,10 +814,7 @@ def test_cardinal_ky():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['ky'])
 
 def test_cardinal_lag():
     assertions = [
@@ -1109,10 +823,7 @@ def test_cardinal_lag():
         ('other', ['2','10','17','100','1000','2.0','2.75','3.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_lag(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['lag'])
 
 def test_cardinal_lb():
     assertions = [
@@ -1120,10 +831,7 @@ def test_cardinal_lb():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['lb'])
 
 def test_cardinal_lg():
     assertions = [
@@ -1131,20 +839,14 @@ def test_cardinal_lg():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['lg'])
 
 def test_cardinal_lkt():
     assertions = [
         ('other', ['0','8','15','100','1000','0.0','0.75','1.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_bm(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['lkt'])
 
 def test_cardinal_ln():
     assertions = [
@@ -1152,20 +854,14 @@ def test_cardinal_ln():
         ('other', ['2','10','17','100','1000','0.1','0.5','0.9','1.1','1.4','1.7','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_ak(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['ln'])
 
 def test_cardinal_lo():
     assertions = [
         ('other', ['0','8','15','100','1000','0.0','0.75','1.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_bm(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['lo'])
 
 def test_cardinal_lt():
     assertions = [
@@ -1175,10 +871,7 @@ def test_cardinal_lt():
         ('other', ['0','10','15','20','30','0.0','10.0','11.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_lt(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['lt'])
 
 def test_cardinal_lv():
     assertions = [
@@ -1187,10 +880,7 @@ def test_cardinal_lv():
         ('other', ['2','6','9','22','26','29','102','0.2','0.55','0.9','1.2','1.55','1.9','10.2'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_lv(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['lv'])
 
 def test_cardinal_mas():
     assertions = [
@@ -1198,10 +888,7 @@ def test_cardinal_mas():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['mas'])
 
 def test_cardinal_mg():
     assertions = [
@@ -1209,10 +896,7 @@ def test_cardinal_mg():
         ('other', ['2','10','17','100','1000','0.1','0.5','0.9','1.1','1.4','1.7','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_ak(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['mg'])
 
 def test_cardinal_mgo():
     assertions = [
@@ -1220,10 +904,7 @@ def test_cardinal_mgo():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['mgo'])
 
 def test_cardinal_mk():
     assertions = [
@@ -1231,10 +912,7 @@ def test_cardinal_mk():
         ('other', ['0','2','9','16','100','0.0','0.2','0.6','1.0','1.2','1.45','1.7'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_mk(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['mk'])
 
 def test_cardinal_ml():
     assertions = [
@@ -1242,10 +920,7 @@ def test_cardinal_ml():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['ml'])
 
 def test_cardinal_mn():
     assertions = [
@@ -1253,10 +928,7 @@ def test_cardinal_mn():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['mn'])
 
 def test_cardinal_mo():
     assertions = [
@@ -1265,10 +937,7 @@ def test_cardinal_mo():
         ('other', ['20','28','35','100','1000'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_mo(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['mo'])
 
 def test_cardinal_mr():
     assertions = [
@@ -1276,20 +945,14 @@ def test_cardinal_mr():
         ('other', ['2','10','17','100','1000','1.1','1.85','2.6','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_am(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['mr'])
 
 def test_cardinal_ms():
     assertions = [
         ('other', ['0','8','15','100','1000','0.0','0.75','1.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_bm(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['ms'])
 
 def test_cardinal_mt():
     assertions = [
@@ -1299,20 +962,14 @@ def test_cardinal_mt():
         ('other', ['20','28','35','100','1000','0.1','0.5','0.9','1.1','1.4','1.7','10.1'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_mt(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['mt'])
 
 def test_cardinal_my():
     assertions = [
         ('other', ['0','8','15','100','1000','0.0','0.75','1.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_bm(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['my'])
 
 def test_cardinal_nah():
     assertions = [
@@ -1320,10 +977,7 @@ def test_cardinal_nah():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['nah'])
 
 def test_cardinal_naq():
     assertions = [
@@ -1332,10 +986,7 @@ def test_cardinal_naq():
         ('other', ['0','3','10','17','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_iu(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['naq'])
 
 def test_cardinal_nb():
     assertions = [
@@ -1343,10 +994,7 @@ def test_cardinal_nb():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['nb'])
 
 def test_cardinal_nd():
     assertions = [
@@ -1354,10 +1002,7 @@ def test_cardinal_nd():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['nd'])
 
 def test_cardinal_ne():
     assertions = [
@@ -1365,10 +1010,7 @@ def test_cardinal_ne():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['ne'])
 
 def test_cardinal_nl():
     assertions = [
@@ -1376,10 +1018,7 @@ def test_cardinal_nl():
         ('other', ['0','2','9','16','100','0.0','0.75','1.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_ast(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['nl'])
 
 def test_cardinal_nn():
     assertions = [
@@ -1387,10 +1026,7 @@ def test_cardinal_nn():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['nn'])
 
 def test_cardinal_nnh():
     assertions = [
@@ -1398,10 +1034,7 @@ def test_cardinal_nnh():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['nnh'])
 
 def test_cardinal_no():
     assertions = [
@@ -1409,20 +1042,14 @@ def test_cardinal_no():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['no'])
 
 def test_cardinal_nqo():
     assertions = [
         ('other', ['0','8','15','100','1000','0.0','0.75','1.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_bm(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['nqo'])
 
 def test_cardinal_nr():
     assertions = [
@@ -1430,10 +1057,7 @@ def test_cardinal_nr():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['nr'])
 
 def test_cardinal_nso():
     assertions = [
@@ -1441,10 +1065,7 @@ def test_cardinal_nso():
         ('other', ['2','10','17','100','1000','0.1','0.5','0.9','1.1','1.4','1.7','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_ak(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['nso'])
 
 def test_cardinal_ny():
     assertions = [
@@ -1452,10 +1073,7 @@ def test_cardinal_ny():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['ny'])
 
 def test_cardinal_nyn():
     assertions = [
@@ -1463,10 +1081,7 @@ def test_cardinal_nyn():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['nyn'])
 
 def test_cardinal_om():
     assertions = [
@@ -1474,10 +1089,7 @@ def test_cardinal_om():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['om'])
 
 def test_cardinal_or():
     assertions = [
@@ -1485,10 +1097,7 @@ def test_cardinal_or():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['or'])
 
 def test_cardinal_os():
     assertions = [
@@ -1496,10 +1105,7 @@ def test_cardinal_os():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['os'])
 
 def test_cardinal_pa():
     assertions = [
@@ -1507,10 +1113,7 @@ def test_cardinal_pa():
         ('other', ['2','10','17','100','1000','0.1','0.5','0.9','1.1','1.4','1.7','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_ak(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['pa'])
 
 def test_cardinal_pap():
     assertions = [
@@ -1518,10 +1121,7 @@ def test_cardinal_pap():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['pap'])
 
 def test_cardinal_pl():
     assertions = [
@@ -1531,10 +1131,7 @@ def test_cardinal_pl():
         ('other', ['0.0','0.75','1.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_pl(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['pl'])
 
 def test_cardinal_prg():
     assertions = [
@@ -1543,10 +1140,7 @@ def test_cardinal_prg():
         ('other', ['2','6','9','22','26','29','102','0.2','0.55','0.9','1.2','1.55','1.9','10.2'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_lv(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['prg'])
 
 def test_cardinal_ps():
     assertions = [
@@ -1554,10 +1148,7 @@ def test_cardinal_ps():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['ps'])
 
 def test_cardinal_pt():
     assertions = [
@@ -1565,10 +1156,7 @@ def test_cardinal_pt():
         ('other', ['2','10','17','100','1000','2.0','2.75','3.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_pt(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['pt'])
 
 def test_cardinal_pt_PT():
     assertions = [
@@ -1576,10 +1164,7 @@ def test_cardinal_pt_PT():
         ('other', ['0','2','9','16','100','0.0','0.75','1.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_ast(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['pt-PT'])
 
 def test_cardinal_rm():
     assertions = [
@@ -1587,10 +1172,7 @@ def test_cardinal_rm():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['rm'])
 
 def test_cardinal_ro():
     assertions = [
@@ -1599,10 +1181,7 @@ def test_cardinal_ro():
         ('other', ['20','28','35','100','1000'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_mo(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['ro'])
 
 def test_cardinal_rof():
     assertions = [
@@ -1610,20 +1189,14 @@ def test_cardinal_rof():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['rof'])
 
 def test_cardinal_root():
     assertions = [
         ('other', ['0','8','15','100','1000','0.0','0.75','1.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_bm(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['root'])
 
 def test_cardinal_ru():
     assertions = [
@@ -1633,10 +1206,7 @@ def test_cardinal_ru():
         ('other', ['0.0','0.75','1.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_ru(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['ru'])
 
 def test_cardinal_rwk():
     assertions = [
@@ -1644,20 +1214,14 @@ def test_cardinal_rwk():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['rwk'])
 
 def test_cardinal_sah():
     assertions = [
         ('other', ['0','8','15','100','1000','0.0','0.75','1.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_bm(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['sah'])
 
 def test_cardinal_saq():
     assertions = [
@@ -1665,10 +1229,7 @@ def test_cardinal_saq():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['saq'])
 
 def test_cardinal_sc():
     assertions = [
@@ -1676,10 +1237,7 @@ def test_cardinal_sc():
         ('other', ['0','2','9','16','100','0.0','0.75','1.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_ast(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['sc'])
 
 def test_cardinal_scn():
     assertions = [
@@ -1687,10 +1245,7 @@ def test_cardinal_scn():
         ('other', ['0','2','9','16','100','0.0','0.75','1.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_ast(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['scn'])
 
 def test_cardinal_sd():
     assertions = [
@@ -1698,10 +1253,7 @@ def test_cardinal_sd():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['sd'])
 
 def test_cardinal_sdh():
     assertions = [
@@ -1709,10 +1261,7 @@ def test_cardinal_sdh():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['sdh'])
 
 def test_cardinal_se():
     assertions = [
@@ -1721,10 +1270,7 @@ def test_cardinal_se():
         ('other', ['0','3','10','17','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_iu(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['se'])
 
 def test_cardinal_seh():
     assertions = [
@@ -1732,30 +1278,21 @@ def test_cardinal_seh():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['seh'])
 
 def test_cardinal_ses():
     assertions = [
         ('other', ['0','8','15','100','1000','0.0','0.75','1.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_bm(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['ses'])
 
 def test_cardinal_sg():
     assertions = [
         ('other', ['0','8','15','100','1000','0.0','0.75','1.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_bm(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['sg'])
 
 def test_cardinal_sh():
     assertions = [
@@ -1764,10 +1301,7 @@ def test_cardinal_sh():
         ('other', ['0','5','12','19','100','0.0','0.5','0.75','1.0','1.5','1.75','2.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_bs(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['sh'])
 
 def test_cardinal_shi():
     assertions = [
@@ -1776,10 +1310,7 @@ def test_cardinal_shi():
         ('other', ['11','19','26','100','1000','1.1','1.5','1.9','2.1','2.4','2.7','10.1'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_shi(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['shi'])
 
 def test_cardinal_si():
     assertions = [
@@ -1787,10 +1318,7 @@ def test_cardinal_si():
         ('other', ['2','10','17','100','1000','0.2','0.55','0.9','1.1','1.45','1.8','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_si(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['si'])
 
 def test_cardinal_sk():
     assertions = [
@@ -1800,10 +1328,7 @@ def test_cardinal_sk():
         ('other', ['0','5','12','19','100'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_cs(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['sk'])
 
 def test_cardinal_sl():
     assertions = [
@@ -1813,10 +1338,7 @@ def test_cardinal_sl():
         ('other', ['0','5','12','19','100'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_sl(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['sl'])
 
 def test_cardinal_sma():
     assertions = [
@@ -1825,10 +1347,7 @@ def test_cardinal_sma():
         ('other', ['0','3','10','17','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_iu(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['sma'])
 
 def test_cardinal_smi():
     assertions = [
@@ -1837,10 +1356,7 @@ def test_cardinal_smi():
         ('other', ['0','3','10','17','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_iu(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['smi'])
 
 def test_cardinal_smj():
     assertions = [
@@ -1849,10 +1365,7 @@ def test_cardinal_smj():
         ('other', ['0','3','10','17','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_iu(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['smj'])
 
 def test_cardinal_smn():
     assertions = [
@@ -1861,10 +1374,7 @@ def test_cardinal_smn():
         ('other', ['0','3','10','17','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_iu(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['smn'])
 
 def test_cardinal_sms():
     assertions = [
@@ -1873,10 +1383,7 @@ def test_cardinal_sms():
         ('other', ['0','3','10','17','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_iu(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['sms'])
 
 def test_cardinal_sn():
     assertions = [
@@ -1884,10 +1391,7 @@ def test_cardinal_sn():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['sn'])
 
 def test_cardinal_so():
     assertions = [
@@ -1895,10 +1399,7 @@ def test_cardinal_so():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['so'])
 
 def test_cardinal_sq():
     assertions = [
@@ -1906,10 +1407,7 @@ def test_cardinal_sq():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['sq'])
 
 def test_cardinal_sr():
     assertions = [
@@ -1918,10 +1416,7 @@ def test_cardinal_sr():
         ('other', ['0','5','12','19','100','0.0','0.5','0.75','1.0','1.5','1.75','2.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_bs(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['sr'])
 
 def test_cardinal_ss():
     assertions = [
@@ -1929,10 +1424,7 @@ def test_cardinal_ss():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['ss'])
 
 def test_cardinal_ssy():
     assertions = [
@@ -1940,10 +1432,7 @@ def test_cardinal_ssy():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['ssy'])
 
 def test_cardinal_st():
     assertions = [
@@ -1951,10 +1440,7 @@ def test_cardinal_st():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['st'])
 
 def test_cardinal_sv():
     assertions = [
@@ -1962,10 +1448,7 @@ def test_cardinal_sv():
         ('other', ['0','2','9','16','100','0.0','0.75','1.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_ast(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['sv'])
 
 def test_cardinal_sw():
     assertions = [
@@ -1973,10 +1456,7 @@ def test_cardinal_sw():
         ('other', ['0','2','9','16','100','0.0','0.75','1.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_ast(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['sw'])
 
 def test_cardinal_syr():
     assertions = [
@@ -1984,10 +1464,7 @@ def test_cardinal_syr():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['syr'])
 
 def test_cardinal_ta():
     assertions = [
@@ -1995,10 +1472,7 @@ def test_cardinal_ta():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['ta'])
 
 def test_cardinal_te():
     assertions = [
@@ -2006,10 +1480,7 @@ def test_cardinal_te():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['te'])
 
 def test_cardinal_teo():
     assertions = [
@@ -2017,20 +1488,14 @@ def test_cardinal_teo():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['teo'])
 
 def test_cardinal_th():
     assertions = [
         ('other', ['0','8','15','100','1000','0.0','0.75','1.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_bm(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['th'])
 
 def test_cardinal_ti():
     assertions = [
@@ -2038,10 +1503,7 @@ def test_cardinal_ti():
         ('other', ['2','10','17','100','1000','0.1','0.5','0.9','1.1','1.4','1.7','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_ak(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['ti'])
 
 def test_cardinal_tig():
     assertions = [
@@ -2049,10 +1511,7 @@ def test_cardinal_tig():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['tig'])
 
 def test_cardinal_tk():
     assertions = [
@@ -2060,10 +1519,7 @@ def test_cardinal_tk():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['tk'])
 
 def test_cardinal_tl():
     assertions = [
@@ -2071,10 +1527,7 @@ def test_cardinal_tl():
         ('other', ['4','6','9','0.4','0.6','0.9'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_fil(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['tl'])
 
 def test_cardinal_tn():
     assertions = [
@@ -2082,20 +1535,14 @@ def test_cardinal_tn():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['tn'])
 
 def test_cardinal_to():
     assertions = [
         ('other', ['0','8','15','100','1000','0.0','0.75','1.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_bm(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['to'])
 
 def test_cardinal_tr():
     assertions = [
@@ -2103,10 +1550,7 @@ def test_cardinal_tr():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['tr'])
 
 def test_cardinal_ts():
     assertions = [
@@ -2114,10 +1558,7 @@ def test_cardinal_ts():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['ts'])
 
 def test_cardinal_tzm():
     assertions = [
@@ -2125,10 +1566,7 @@ def test_cardinal_tzm():
         ('other', ['2','6','10','100','103','106','1000','0.1','0.5','0.9','1.1','1.4','1.7','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_tzm(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['tzm'])
 
 def test_cardinal_ug():
     assertions = [
@@ -2136,10 +1574,7 @@ def test_cardinal_ug():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['ug'])
 
 def test_cardinal_uk():
     assertions = [
@@ -2149,10 +1584,7 @@ def test_cardinal_uk():
         ('other', ['0.0','0.75','1.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_ru(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['uk'])
 
 def test_cardinal_ur():
     assertions = [
@@ -2160,10 +1592,7 @@ def test_cardinal_ur():
         ('other', ['0','2','9','16','100','0.0','0.75','1.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_ast(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['ur'])
 
 def test_cardinal_uz():
     assertions = [
@@ -2171,10 +1600,7 @@ def test_cardinal_uz():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['uz'])
 
 def test_cardinal_ve():
     assertions = [
@@ -2182,20 +1608,14 @@ def test_cardinal_ve():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['ve'])
 
 def test_cardinal_vi():
     assertions = [
         ('other', ['0','8','15','100','1000','0.0','0.75','1.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_bm(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['vi'])
 
 def test_cardinal_vo():
     assertions = [
@@ -2203,10 +1623,7 @@ def test_cardinal_vo():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['vo'])
 
 def test_cardinal_vun():
     assertions = [
@@ -2214,10 +1631,7 @@ def test_cardinal_vun():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['vun'])
 
 def test_cardinal_wa():
     assertions = [
@@ -2225,10 +1639,7 @@ def test_cardinal_wa():
         ('other', ['2','10','17','100','1000','0.1','0.5','0.9','1.1','1.4','1.7','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_ak(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['wa'])
 
 def test_cardinal_wae():
     assertions = [
@@ -2236,20 +1647,14 @@ def test_cardinal_wae():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['wae'])
 
 def test_cardinal_wo():
     assertions = [
         ('other', ['0','8','15','100','1000','0.0','0.75','1.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_bm(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['wo'])
 
 def test_cardinal_xh():
     assertions = [
@@ -2257,10 +1662,7 @@ def test_cardinal_xh():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['xh'])
 
 def test_cardinal_xog():
     assertions = [
@@ -2268,10 +1670,7 @@ def test_cardinal_xog():
         ('other', ['0','2','9','16','100','0.0','0.45','0.9','1.1','1.35','1.6','10.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_af(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['xog'])
 
 def test_cardinal_yi():
     assertions = [
@@ -2279,40 +1678,28 @@ def test_cardinal_yi():
         ('other', ['0','2','9','16','100','0.0','0.75','1.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_ast(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['yi'])
 
 def test_cardinal_yo():
     assertions = [
         ('other', ['0','8','15','100','1000','0.0','0.75','1.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_bm(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['yo'])
 
 def test_cardinal_yue():
     assertions = [
         ('other', ['0','8','15','100','1000','0.0','0.75','1.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_bm(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['yue'])
 
 def test_cardinal_zh():
     assertions = [
         ('other', ['0','8','15','100','1000','0.0','0.75','1.5','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_bm(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['zh'])
 
 def test_cardinal_zu():
     assertions = [
@@ -2320,10 +1707,7 @@ def test_cardinal_zu():
         ('other', ['2','10','17','100','1000','1.1','1.85','2.6','10.0','100.0'])
     ]
 
-    for assertion in assertions:
-        match, samples = assertion
-        for sample in samples:
-            assert cardinal_am(*get_parts_of_num(sample)) == match
+    check(assertions, CARDINALS['zu'])
 
 
 # ================================
