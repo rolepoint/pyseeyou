@@ -1,3 +1,10 @@
+# v1.0.0
+- Add support for all languages specified within
+  https://raw.githubusercontent.com/unicode-cldr/cldr-core/master/supplemental/plurals.json
+  At the time of writing this was version 34
+- Add lookup_closest_locale function to better handle region specific
+  locales like de_AT or fr_FR
+
 # v0.5.0
 - Add support for Python 3.7
 
