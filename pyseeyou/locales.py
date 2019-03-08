@@ -1,23 +1,54 @@
-from __future__ import unicode_literals
+from pyseeyou.cldr_rules import CARDINALS
 
+def lookup_closest_locale(locale, available, separator = '_'):
+    '''
+    Looks up the closest available locale to use for specified locale
 
-def get_cardinal_category(num_string, lang):
+        :param locale: BCP 47 language tag to lookup
+        :param available: Dictionary or list with available locales
+        :param separator: Language tag extensions separator
+
+        :returns: Best available candidate to use
+    '''
+    if isinstance(locale, str) and locale in available:
+        return locale
+
+    locales = []
+    if isinstance(locale, list):
+        locales = [] + locale
+    else:
+        locales.append(locale)
+
+    for locale in locales:
+        current = locale.split(separator)
+        while len(current) != 0:
+            candidate = separator.join(current)
+            if candidate in available:
+                return candidate
+
+            current.pop()
+
+def get_cardinal_category(num_string, locale):
     n, i, v, w, f, t = get_parts_of_num(num_string)
 
-    if lang in LOCALE_FUNCTIONS:
-        return LOCALE_FUNCTIONS[lang](n, i, v, w, f, t)
-    else:
-        raise Exception('Unknown locale code.')
+    closest_locale = lookup_closest_locale(locale, CARDINALS)
 
+    if not closest_locale:
+        closest_locale = 'en'
+
+    cardinal_func = CARDINALS[closest_locale]
+
+    if not cardinal_func:
+        raise Exception('Locale "{0}" not supported'.format(locale))
+
+    return cardinal_func(n, i, v, w, f, t)
 
 def get_parts_of_num(num_string):
     '''
     Gets the different parts of a number in order to calculate which plurality
     rule to apply.
-
     Parts are specified at this URL:
     http://unicode.org/reports/tr35/tr35-numbers.html#Operands
-
     :returns:
         n: absolute value of the source number (integer and decimals).
         i: integer digits of n.
@@ -26,13 +57,15 @@ def get_parts_of_num(num_string):
         f: visible fractional digits in n, with trailing zeros.
         t: visible fractional digits in n, without trailing zeros.
     '''
-    n = num_string
 
-    decimal_split = n.split('.')
-    i = int(decimal_split[0])
+    decimal_split = str(num_string).split('.')
+    i = abs(int(decimal_split[0]))
 
     if len(decimal_split) != 2:
+        n = int(num_string)
         return n, i, 0, 0, 0, 0
+
+    n = float(num_string)
 
     decimal_part = decimal_split[1]
     v = len(decimal_part)
@@ -46,62 +79,3 @@ def get_parts_of_num(num_string):
     t = int(dec_part_no_trailing_zeros)
 
     return n, i, v, w, f, t
-
-
-def brazilian_pt(n, i, v, w, f, t):
-    if 0 <= i < 2 and f == 0:
-        return 'one'
-
-    return 'other'
-
-
-def czech(n, i, v, w, f, t):
-    if i == 1 and v == 0:
-        return 'one'
-
-    if 2 <= i <= 4 and v == 0:
-        return 'few'
-
-    if v != 0:
-        return 'many'
-
-    return 'other'
-
-
-def french(n, i, v, w, f, t):
-    if i == 0 or i == 1:
-        return 'one'
-
-    return 'other'
-
-
-def one_or_other(n, i, v, w, f, t):
-    if i == 1 and v == 0:
-        return 'one'
-
-    return 'other'
-
-
-def other(n, i, v, w, f, t):
-    return 'other'
-
-
-def spanish(n, i, v, w, f, t):
-    if i == 1 and w == 0:
-        return 'one'
-    return 'other'
-
-
-LOCALE_FUNCTIONS = {
-    'cs': czech,
-    'de': one_or_other,
-    'en': one_or_other,
-    'fr': french,
-    'it': one_or_other,
-    'ja': other,
-    'nl': one_or_other,
-    'pt': brazilian_pt,
-    'pt_PT': one_or_other,
-    'zh': other,
-    'es': spanish
-}
