@@ -97,6 +97,14 @@ def cardinal_bs(n, i, v, w, f, t):
 
     return 'other'
 
+def cardinal_ceb(n, i, v, w, f, t):
+    i10 = i % 10
+    f10 = f % 10
+    if v == 0 and (i == 1 or i == 2 or i == 3) or v == 0 and (not (i10 == 4 or i10 == 6 or i10 == 9)) or v != 0 and (not (f10 == 4 or f10 == 6 or f10 == 9)):
+        return 'one'
+
+    return 'other'
+
 def cardinal_cs(n, i, v, w, f, t):
     mf_i = math.floor(i) == i
     if i == 1 and v == 0:
@@ -144,14 +152,6 @@ def cardinal_dsb(n, i, v, w, f, t):
 
 def cardinal_ff(n, i, v, w, f, t):
     if (i == 0 or i == 1):
-        return 'one'
-
-    return 'other'
-
-def cardinal_fil(n, i, v, w, f, t):
-    i10 = i % 10
-    f10 = f % 10
-    if v == 0 and (i == 1 or i == 2 or i == 3) or v == 0 and (not (i10 == 4 or i10 == 6 or i10 == 9)) or v != 0 and (not (f10 == 4 or f10 == 6 or f10 == 9)):
         return 'one'
 
     return 'other'
@@ -230,6 +230,25 @@ def cardinal_ksh(n, i, v, w, f, t):
 
     return 'other'
 
+def cardinal_kw(n, i, v, w, f, t):
+    n100 = n % 100
+    n1000 = n % 1000
+    n100000 = n % 100000
+    n1000000 = n % 1000000
+    mf_n100000 = math.floor(n100000) == n100000
+    if n == 0:
+        return 'zero'
+    if n == 1:
+        return 'one'
+    if (n100 == 2 or n100 == 22 or n100 == 42 or n100 == 62 or n100 == 82) or n1000 == 0 and (mf_n100000 and n100000 >= 1000 and n100000 <= 20000 or n100000 == 40000 or n100000 == 60000 or n100000 == 80000) or n != 0 and n1000000 == 100000:
+        return 'two'
+    if (n100 == 3 or n100 == 23 or n100 == 43 or n100 == 63 or n100 == 83):
+        return 'few'
+    if n != 1 and (n100 == 1 or n100 == 21 or n100 == 41 or n100 == 61 or n100 == 81):
+        return 'many'
+
+    return 'other'
+
 def cardinal_lag(n, i, v, w, f, t):
     if n == 0:
         return 'zero'
@@ -281,7 +300,7 @@ def cardinal_mo(n, i, v, w, f, t):
     mf_n100 = math.floor(n100) == n100
     if i == 1 and v == 0:
         return 'one'
-    if v != 0 or n == 0 or n != 1 and mf_n100 and n100 >= 1 and n100 <= 19:
+    if v != 0 or n == 0 or mf_n100 and n100 >= 2 and n100 <= 19:
         return 'few'
 
     return 'other'
@@ -390,6 +409,7 @@ CARDINALS = {
     'bs': cardinal_bs,
     'ca': cardinal_ast,
     'ce': cardinal_af,
+    'ceb': cardinal_ceb,
     'cgg': cardinal_af,
     'chr': cardinal_af,
     'ckb': cardinal_af,
@@ -410,7 +430,7 @@ CARDINALS = {
     'fa': cardinal_am,
     'ff': cardinal_ff,
     'fi': cardinal_ast,
-    'fil': cardinal_fil,
+    'fil': cardinal_ceb,
     'fo': cardinal_af,
     'fr': cardinal_ff,
     'fur': cardinal_af,
@@ -463,7 +483,7 @@ CARDINALS = {
     'ksb': cardinal_af,
     'ksh': cardinal_ksh,
     'ku': cardinal_af,
-    'kw': cardinal_iu,
+    'kw': cardinal_kw,
     'ky': cardinal_af,
     'lag': cardinal_lag,
     'lb': cardinal_af,
@@ -480,7 +500,7 @@ CARDINALS = {
     'ml': cardinal_af,
     'mn': cardinal_af,
     'mo': cardinal_mo,
-    'mr': cardinal_am,
+    'mr': cardinal_af,
     'ms': cardinal_bm,
     'mt': cardinal_mt,
     'my': cardinal_bm,
@@ -551,7 +571,7 @@ CARDINALS = {
     'ti': cardinal_ak,
     'tig': cardinal_af,
     'tk': cardinal_af,
-    'tl': cardinal_fil,
+    'tl': cardinal_ceb,
     'tn': cardinal_af,
     'to': cardinal_bm,
     'tr': cardinal_af,
