@@ -1,3 +1,6 @@
+# v1.0.1
+- Fix empty string formatting
+
 # v1.0.0
 - Add support for all languages specified within
   https://raw.githubusercontent.com/unicode-cldr/cldr-core/master/supplemental/plurals.json

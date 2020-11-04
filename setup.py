@@ -2,7 +2,7 @@ from setuptools import find_packages, setup
 
 setup(
     name='pyseeyou',
-    version='1.0.0',
+    version='1.0.1',
     description='A Python Parser for the ICU MessageFormat.',
     author='Siame Rafiq',
     author_email='mail@sia.me.uk',
@@ -10,5 +10,5 @@ setup(
     install_requires=['parsimonious', 'toolz', 'future'],
     tests_require=['pytest'],
     url='https://github.com/rolepoint/pyseeyou',
-    download_url='https://github.com/rolepoint/pyseeyou/archive/v1.0.0.tar.gz',
+    download_url='https://github.com/rolepoint/pyseeyou/archive/v1.0.1.tar.gz',
     keywords='python i18n messageformat python3 python2')
