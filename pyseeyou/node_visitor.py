@@ -168,7 +168,7 @@ class ICUNodeVisitor(NodeVisitor):
     def _get_key_value(self, items):
         key, value = None, None
         for item in items:
-            if not item:
+            if item is None:
                 continue
 
             elif isinstance(item, str):

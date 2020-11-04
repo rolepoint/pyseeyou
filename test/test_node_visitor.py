@@ -113,3 +113,10 @@ def test_msg_with_unicode_chars():
 
     i = ICUNodeVisitor({})
     assert i.visit(msg) == '☹'
+
+
+def test_empty_msg():
+    msg = ICUMessageFormat.parse('{number, plural, =1 {} other {#}}')
+    i = ICUNodeVisitor({'number': 1})
+
+    assert i.visit(msg) == ''

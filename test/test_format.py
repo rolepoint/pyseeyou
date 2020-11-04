@@ -66,3 +66,11 @@ def test_format_tree():
 
     plural = format_tree(ast, {'NUM_TICKETS': 43}, 'en')
     assert plural == '42 ticketerinos.'
+
+
+def test_format_empty_string():
+    template = '{number, plural, =1 {} other {#}}'
+
+    result = format(template, {'number': 1}, 'en')
+
+    assert result == ''
