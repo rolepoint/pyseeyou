@@ -1,3 +1,6 @@
+# v1.0.2
+- Allow unknown SELECT options to fallback to other
+
 # v1.0.1
 - Fix empty string formatting
 
