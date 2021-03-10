@@ -1,9 +1,14 @@
 from setuptools import find_packages, setup
 
+with open("README.md") as f:
+    long_description = r.read()
+ 
 setup(
     name='pyseeyou',
     version='1.0.2',
     description='A Python Parser for the ICU MessageFormat.',
+    long_description=long_description,
+    long_description_content_type="text/markdown",
     author='Siame Rafiq',
     author_email='mail@sia.me.uk',
     packages=find_packages(exclude=['tests']),
