@@ -133,7 +133,8 @@ class ICUNodeVisitor(NodeVisitor):
 
     def _select_replace(self, item, key):
         if key in self.options:
-            return item[self.options[key]]
+            item_key = self.options[key]
+            return item.get(item_key, item['other'])
 
         else:
             return item['other']

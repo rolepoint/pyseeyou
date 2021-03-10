@@ -27,6 +27,13 @@ def test_use_other_statement_if_no_select_arg():
     i = ICUNodeVisitor({})
     assert i.visit(msg) == 'They.'
 
+def test_use_other_statement_if_unknown_select_arg():
+    msg = ICUMessageFormat.parse(
+        '''{WHO, select, male {He} female {She} other {They}}.''')
+
+    i = ICUNodeVisitor({'WHO:': 'randomvalue'})
+    assert i.visit(msg) == 'They.'
+
 
 def test_process_plural_statement():
     msg = ICUMessageFormat.parse(
