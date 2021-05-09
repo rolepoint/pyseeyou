@@ -8,7 +8,7 @@ setup(
     version='1.0.2',
     description='A Python Parser for the ICU MessageFormat.',
     long_description=long_description,
-    long_description_content_type="text/markdown",
+    long_description_content_type="text/x-rst",
     author='Siame Rafiq',
     author_email='mail@sia.me.uk',
     packages=find_packages(exclude=['tests']),
