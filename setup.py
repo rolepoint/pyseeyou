@@ -7,6 +7,7 @@ setup(
     name='pyseeyou',
     version='1.0.2',
     description='A Python Parser for the ICU MessageFormat.',
+    license='MIT License',
     long_description=long_description,
     long_description_content_type="text/x-rst",
     author='Siame Rafiq',
