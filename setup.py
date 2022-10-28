@@ -11,7 +11,7 @@ setup(
     long_description_content_type="text/x-rst",
     author='Siame Rafiq',
     author_email='mail@sia.me.uk',
-    packages=find_packages(exclude=['tests']),
+    packages=find_packages(exclude=['test']),
     install_requires=['parsimonious', 'toolz', 'future'],
     tests_require=['pytest'],
     url='https://github.com/rolepoint/pyseeyou',
